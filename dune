@@ -1,7 +1,19 @@
 (library
  (name hello)
  (modules hello)
- (instrumentation (backend bisect_ppx)))
+ (instrumentation
+  (backend bisect_ppx)))
+
+(library
+ (name sorts)
+ (modules sorts)
+ (instrumentation
+  (backend bisect_ppx)))
+
+(executable
+ (name test_sorts)
+ (modules test_sorts)
+ (libraries ounit2 sorts))
 
 (executable
  (name tester)
@@ -10,4 +22,10 @@
 
 (rule
  (alias runtest)
- (action (run %{exe:tester.exe})))
+ (action
+  (run %{exe:tester.exe})))
+
+(rule
+ (alias runtestsorts)
+ (action
+  (run %{exe:test_sorts.exe})))
