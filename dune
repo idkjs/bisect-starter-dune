@@ -26,6 +26,6 @@
   (run %{exe:tester.exe})))
 
 (rule
- (alias runtestsorts)
+ (alias runtest)
  (action
   (run %{exe:test_sorts.exe})))
